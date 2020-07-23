@@ -1,0 +1,20 @@
+version: "3"
+services:
+  # interactive cli
+  cli:
+    build: .
+    command: sleep 9999
+    entrypoint: [""]
+    volumes:
+      - "./src:/client"
+    working_dir: /client
+
+  # mock rest api
+  api:
+    build:
+      context: tests/mock
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - "./tests/mock/api:/api"

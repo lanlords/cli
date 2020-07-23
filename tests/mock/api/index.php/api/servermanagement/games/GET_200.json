@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "name": "Team Fortress 2",
+        "ports": "27015/udp,27015/tcp",
+        "rconPort": "27015",
+        "type": "source",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "tf2:beta",
+        "gameAbbreviation": "tf2",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 2,
+        "name": "Call Of Duty 2",
+        "ports": "28960/udp,20510/udp",
+        "rconPort": "28960",
+        "type": "callofduty",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "cod2:beta",
+        "gameAbbreviation": "cod2",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 3,
+        "name": "Battlefield 2",
+        "ports": "28960,20510",
+        "rconPort": "4711",
+        "type": "battlefield",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "bf2:beta",
+        "gameAbbreviation": "bf2",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 4,
+        "name": "Call Of Duty 4",
+        "ports": "28960/udp,20510/udp",
+        "rconPort": "28960",
+        "type": "callofduty",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "cod4:beta",
+        "gameAbbreviation": "cod4",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 5,
+        "name": "Call Of Duty 5",
+        "ports": "28960/udp,20510/udp",
+        "rconPort": "28960",
+        "type": "callofduty",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "cod5:beta",
+        "gameAbbreviation": "cod5",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 6,
+        "name": "Battlefield 1942",
+        "ports": "14567/udp,22000/udp",
+        "rconPort": "0",
+        "type": "battlefield1942",
+        "isContainer": true,
+        "rconPassword": "none",
+        "dockerImageName": "bf1942:beta",
+        "gameAbbreviation": "bf1942",
+        "gameEnvConfigs": [
+            {
+                "id": 1,
+                "envResolution": "server-name",
+                "envName": "CONFIG_SERVERNAME",
+                "envValue": null,
+                "game": 6
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Battlefield Bad Company 2",
+        "ports": "0",
+        "rconPort": "48888",
+        "type": "battlefieldbadcompany2",
+        "isContainer": false,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "none",
+        "gameAbbreviation": "bfbc2",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 10,
+        "name": "Counterstrike Global offensive",
+        "ports": "0",
+        "rconPort": "27015",
+        "type": "source",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "csgo:beta",
+        "gameAbbreviation": "csgo",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 11,
+        "name": "Counterstrike Global offensive ONLINE",
+        "ports": "27016/udp,27016/tcp",
+        "rconPort": "27016",
+        "type": "source",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "csgo:online",
+        "gameAbbreviation": "csgo-online",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 12,
+        "name": "Team Fortress 2 ONLINE",
+        "ports": "27015/udp,27015/tcp",
+        "rconPort": "27015",
+        "type": "source",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "tf2:online",
+        "gameAbbreviation": "tf2-online",
+        "gameEnvConfigs": []
+    },
+    {
+        "id": 13,
+        "name": "Call Of Duty 4 ONLINE",
+        "ports": "28960/udp,20510/udp",
+        "rconPort": "28960",
+        "type": "callofduty",
+        "isContainer": true,
+        "rconPassword": "xxxxxxxxxxxxxxx",
+        "dockerImageName": "cod4:online",
+        "gameAbbreviation": "cod4-online",
+        "gameEnvConfigs": []
+    }
+]

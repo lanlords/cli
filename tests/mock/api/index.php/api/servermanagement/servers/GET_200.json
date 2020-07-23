@@ -1,0 +1,252 @@
+[
+    {
+        "id": 1,
+        "name": "BFBC2SERVER1",
+        "ipAddress": "192.168.1.241",
+        "port": "48888",
+        "containerId": "00",
+        "game": {
+            "id": 9,
+            "name": "Battlefield Bad Company 2",
+            "ports": "0",
+            "rconPort": "48888",
+            "type": "battlefieldbadcompany2",
+            "isContainer": false,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "none",
+            "gameAbbreviation": "bfbc2",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 25,
+        "name": "BFBC2SERVER2",
+        "ipAddress": "192.168.1.242",
+        "port": "48888",
+        "containerId": "01",
+        "game": {
+            "id": 9,
+            "name": "Battlefield Bad Company 2",
+            "ports": "0",
+            "rconPort": "48888",
+            "type": "battlefieldbadcompany2",
+            "isContainer": false,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "none",
+            "gameAbbreviation": "bfbc2",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 37,
+        "name": "COD4",
+        "ipAddress": "192.168.1.64",
+        "port": "28960",
+        "containerId": "a4d1a1d78472512a99e28830ae7bd0f8844257137b3758a290670619427d71bc",
+        "game": {
+            "id": 4,
+            "name": "Call Of Duty 4",
+            "ports": "28960/udp,20510/udp",
+            "rconPort": "28960",
+            "type": "callofduty",
+            "isContainer": true,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "cod4:beta",
+            "gameAbbreviation": "cod4",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 38,
+        "name": "BF1942",
+        "ipAddress": "192.168.1.65",
+        "port": "0",
+        "containerId": "19329ee5d164635e25642caa29bd7a2ffcc98c9edc30465fb680b72d5cedbe82",
+        "game": {
+            "id": 6,
+            "name": "Battlefield 1942",
+            "ports": "14567/udp,22000/udp",
+            "rconPort": "0",
+            "type": "battlefield1942",
+            "isContainer": true,
+            "rconPassword": "none",
+            "dockerImageName": "bf1942:beta",
+            "gameAbbreviation": "bf1942",
+            "gameEnvConfigs": [
+                {
+                    "id": 1,
+                    "envResolution": "server-name",
+                    "envName": "CONFIG_SERVERNAME",
+                    "envValue": null,
+                    "game": 6
+                }
+            ],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 39,
+        "name": "csgo",
+        "ipAddress": "192.168.1.66",
+        "port": "27015",
+        "containerId": "a0d933c4989d82169f9091a8eabf4bf24483dca3ac9a69c3fdfb9af7c3e857aa",
+        "game": {
+            "id": 10,
+            "name": "Counterstrike Global offensive",
+            "ports": "0",
+            "rconPort": "27015",
+            "type": "source",
+            "isContainer": true,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "csgo:beta",
+            "gameAbbreviation": "csgo",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 40,
+        "name": "TF2",
+        "ipAddress": "192.168.1.67",
+        "port": "27015",
+        "containerId": "64346d5bec6aa750134fe7ee5b6049c40430c52011de392d52387fad59ab66de",
+        "game": {
+            "id": 1,
+            "name": "Team Fortress 2",
+            "ports": "27015/udp,27015/tcp",
+            "rconPort": "27015",
+            "type": "source",
+            "isContainer": true,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "tf2:beta",
+            "gameAbbreviation": "tf2",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 41,
+        "name": "FFvsVH_cod5",
+        "ipAddress": "192.168.1.68",
+        "port": "28960",
+        "containerId": "c51984bf509539487ceb538f2365097c8917b7f79364d13a7c60c12639689767",
+        "game": {
+            "id": 5,
+            "name": "Call Of Duty 5",
+            "ports": "28960/udp,20510/udp",
+            "rconPort": "28960",
+            "type": "callofduty",
+            "isContainer": true,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "cod5:beta",
+            "gameAbbreviation": "cod5",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 42,
+        "name": "TF2 Online",
+        "ipAddress": "192.168.1.69",
+        "port": "27015",
+        "containerId": "35f4e77c09f6b1cb3f94da0a723df996b349623a4289daa1b42daa94b6f0ae63",
+        "game": {
+            "id": 12,
+            "name": "Team Fortress 2 ONLINE",
+            "ports": "27015/udp,27015/tcp",
+            "rconPort": "27015",
+            "type": "source",
+            "isContainer": true,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "tf2:online",
+            "gameAbbreviation": "tf2-online",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 45,
+        "name": "CSGO Online",
+        "ipAddress": "192.168.1.70",
+        "port": "27016",
+        "containerId": "4d6a86bf5d5a1da7b5a06ae744b614ff42f5c7fb05f445e810d951d5a8f082f7",
+        "game": {
+            "id": 11,
+            "name": "Counterstrike Global offensive ONLINE",
+            "ports": "27016/udp,27016/tcp",
+            "rconPort": "27016",
+            "type": "source",
+            "isContainer": true,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "csgo:online",
+            "gameAbbreviation": "csgo-online",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 47,
+        "name": "COD4 Online",
+        "ipAddress": "192.168.1.71",
+        "port": "28960",
+        "containerId": "ea7213624d6526f2cad2f9bc95498ad197f1f5d728f341b8d657a7d708061956",
+        "game": {
+            "id": 13,
+            "name": "Call Of Duty 4 ONLINE",
+            "ports": "28960/udp,20510/udp",
+            "rconPort": "28960",
+            "type": "callofduty",
+            "isContainer": true,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "cod4:online",
+            "gameAbbreviation": "cod4-online",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    },
+    {
+        "id": 48,
+        "name": "COD4 Online 2",
+        "ipAddress": "192.168.1.72",
+        "port": "28960",
+        "containerId": "cecd4e888c2d0a0c1358c51398f6c1c7d001d5d6d60c2182514823f9169c8d60",
+        "game": {
+            "id": 13,
+            "name": "Call Of Duty 4 ONLINE",
+            "ports": "28960/udp,20510/udp",
+            "rconPort": "28960",
+            "type": "callofduty",
+            "isContainer": true,
+            "rconPassword": "xxxxxxxxxxxxxxx",
+            "dockerImageName": "cod4:online",
+            "gameAbbreviation": "cod4-online",
+            "gameEnvConfigs": [],
+            "__initializer__": null,
+            "__cloner__": null,
+            "__isInitialized__": true
+        }
+    }
+]
