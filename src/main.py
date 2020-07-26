@@ -116,6 +116,44 @@ def read_option(option):
             )
             exit(code=11)
 
+# call api and properly catch errors
+def call_api(method, uri, data = None, url = read_option("api.url")):
+    """
+    Call API with given method and uri
+    Request errors will be mostly catched and triggers exit
+    """
+
+    # default connection settings
+    connect_timeout = 5.0
+
+    # connect to api
+    try:
+        # execute get request to api
+        if method == "get":
+            # execute get request
+            request = requests.get(url + uri, timeout=connect_timeout)
+
+            # parse json and return output
+            return json.loads(request.text)
+
+        elif method == "post":
+            # execute post request
+            request = requests.post(url + uri, data=data, timeout=connect_timeout)
+
+            # return response
+            return request.text
+
+        else:
+            # raise incorrect method
+            raise NameError("The HTTP method \"" + method + "\" is not valid!")
+
+    except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError):
+        # return error message and exit with err code
+        click.echo(click.style("Could not connect to API ", fg="red") + url
+            + click.style(" because of a timeout or connection error!", fg="red")
+        )
+        exit(code=11)
+
 
 # main command group
 @click.group()
@@ -168,17 +206,32 @@ def config_show():
 
     # check for lanlords config file
     if not (os.path.isfile(default_config_file)):
-        # output no config warning
-        click.echo("No config could be found at " + default_config_file)
+        # return no config error message and exit with err code
+        click.echo(click.style("No config could be found at ", fg="red")
+            + default_config_file
+        )
+        exit(code=11)
     else:
         # read current config file
-        config = configparser.ConfigParser()
-        config.read(default_config_file)
+        config = read_config()
 
-        # output current config
+        # output current config path
         click.echo(click.style(default_config_file, fg="yellow") + ":\n")
-        click.echo("  > api.url       " + click.style(config['api']['url'], fg="blue"))
-        click.echo("")
+
+        # initialize empty list
+        config_list = []
+
+        # flatten config dictionary for output
+        for section in config.keys():
+            # separate per section
+            for option in config[section]:
+                # add setting to output list
+                config_list = config_list + [{ "Setting": "> " + section + "."
+                    + option, "Value": click.style(config[section][option],
+                    fg="blue")}]
+
+        # output config settings and it's values
+        click.echo(tabulate(config_list, tablefmt="plain"))
 
 
 # init server command
@@ -220,24 +273,17 @@ def game_list(output_json):
     List defined games in admin
     """
 
-    # retrieve list from API
-    request = requests.get(read_option("api.url") + "/servermanagement/games")
-    output = json.loads(request.text)
+    # execute api request
+    request_output = call_api("get", "/servermanagement/games")
 
     # check if json output
     if output_json:
-        # output json dump
-        click.echo(json.dumps(output))
+        # output in json format to terminal
+        click.echo(json.dumps(request_output))
 
     else:
-        # output in pretty table format
-        click.echo(tabulate(output, headers="keys"))
-        #print(tabulate(output, headers="keys"))
-
-    ## output current config
-    #click.echo(click.style(default_config_file, fg="yellow") + ":\n")
-    #click.echo("  > api.url       " + click.style("bla", fg="blue"))
-    #click.echo("")
+        # output in pretty table format to terminal
+        click.echo(tabulate(request_output, headers="keys"))
 
 
 # init containers command
@@ -245,12 +291,24 @@ def game_list(output_json):
 def container():
     """Manage running containers"""
 
-@server.command('list')
-def container_list():
+@container.command('list')
+@click.option("--output-json", help="Output in JSON format", is_flag=True)
+def container_list(output_json):
     """
     List running containers on server
     """
-    click.echo("this is not yet implemented")
+
+    # execute api request
+    request_output = call_api("get", "/servermanagement/listContainers")
+
+    # check if json output
+    if output_json:
+        # output in json format to terminal
+        click.echo(json.dumps(request_output))
+
+    else:
+        # output in pretty table format to terminal
+        click.echo(tabulate(request_output, headers="keys"))
 
 
 # init main cli
