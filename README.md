@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/lanlords/cli/badge)](https://www.codefactor.io/repository/github/lanlords/cli)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 # Lanlords CLI
@@ -6,3 +7,6 @@ CLI to easily and quickly manage the Lanlords infrastructure from your trusted t
 Beware that this CLI is extremely specific to the Lanlords infrastructure and
 communicates with internal Lanlords systems which may not public.
 
+## License
+
+[MIT license](LICENSE)
