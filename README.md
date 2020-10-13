@@ -33,6 +33,21 @@ mock-server --dir=tests/mock/api
 ```
 The easiest way is to use the Docker Compose method.
 
+### Docker Compose
+
+Using Docker Compose is the easiest method seeing it automatically spins up the
+API mock server and a separate container which contains the CLI and the
+necessary dependencies.
+
+Start the containers with the docker-compose command:
+```
+docker-compose up
+```
+Then you can use the cli on your own machine or use the cli container:
+```
+docker exec -ti $(docker ps -f name=cli_cli -q) /bin/bash
+```
+
 ## License
 
 [MIT license](LICENSE)
