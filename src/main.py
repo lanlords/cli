@@ -11,16 +11,10 @@ from tabulate import tabulate
 # default settings
 default_config_dir = os.path.expanduser("~") + "/.lanlords"
 default_config_file = default_config_dir + "/config"
-default_options = {
-    "api" : {
-        "url" : {
-            "env" : "LANLORDS_API_URL"
-        }
-    }
-}
+default_options = {"api": {"url": {"env": "LANLORDS_API_URL"}}}
 
 # read cli config file
-def read_config(config_file = default_config_file):
+def read_config(config_file=default_config_file):
     """
     Check if config file exists, read it and return dictionary
     """
@@ -28,7 +22,7 @@ def read_config(config_file = default_config_file):
     # check if config file exists
     if not (os.path.isfile(config_file)):
         # raise missing file exception
-        raise FileNotFoundError("The config file \"" + config_file + "\" does not exist!")
+        raise FileNotFoundError('The config file "' + config_file + '" does not exist!')
 
     else:
         # read config file
@@ -36,10 +30,11 @@ def read_config(config_file = default_config_file):
         config.read(config_file)
 
         # transform config to proper dict
-        config_dict = { s:dict(config.items(s)) for s in config.sections() }
+        config_dict = {s: dict(config.items(s)) for s in config.sections()}
 
         # return parsed config
         return config_dict
+
 
 # parse given option
 def parse_option(option):
@@ -52,14 +47,19 @@ def parse_option(option):
     try:
         # set section/option variable
         option_section = option.split(".")[0]
-        option_name    = option.split(".")[1]
+        option_name = option.split(".")[1]
 
     except IndexError:
         # return error message and exit with err code
-        click.echo(click.style("The option ", fg="red") + option
-            + click.style(" is in an incorrect format!\n"
-            + "This function expects input in the form of [section].[option]",
-            fg="red"))
+        click.echo(
+            click.style("The option ", fg="red")
+            + option
+            + click.style(
+                " is in an incorrect format!\n"
+                + "This function expects input in the form of [section].[option]",
+                fg="red",
+            )
+        )
         exit(code=11)
 
     # check if option is in predefined list
@@ -69,19 +69,18 @@ def parse_option(option):
 
     except KeyError:
         # return error message and exit with err code
-        click.echo(click.style("The option ", fg="red") + option
+        click.echo(
+            click.style("The option ", fg="red")
+            + option
             + click.style(" is not a valid option!", fg="red")
         )
         exit(code=11)
 
     # construct dict from option info
-    parsed = {
-        "name"    : option_name,
-        "section" : option_section,
-        "config"  : option_config
-    }
+    parsed = {"name": option_name, "section": option_section, "config": option_config}
 
     return parsed
+
 
 # retrieve config
 def read_option(option):
@@ -103,21 +102,28 @@ def read_option(option):
         try:
             # retrieve and return option value from config
             option_config = read_config()
-            option_value  = option_config[option_parsed["section"]][option_parsed["name"]]
+            option_value = option_config[option_parsed["section"]][
+                option_parsed["name"]
+            ]
 
             # return retrieved option value
             return option_value
 
         except KeyError:
             # return error message and exit with err code
-            click.echo(click.style("The option ", fg="red") + option
-                + click.style(" is not defined in the config or as an "
-                + "environment variable!", fg="red")
+            click.echo(
+                click.style("The option ", fg="red")
+                + option
+                + click.style(
+                    " is not defined in the config or as an " + "environment variable!",
+                    fg="red",
+                )
             )
             exit(code=11)
 
+
 # call api and properly catch errors
-def call_api(method, uri, data = None, url = read_option("api.url")):
+def call_api(method, uri, data=None, url=read_option("api.url")):
     """
     Call API with given method and uri
     Request errors will be mostly catched and triggers exit
@@ -145,11 +151,13 @@ def call_api(method, uri, data = None, url = read_option("api.url")):
 
         else:
             # raise incorrect method
-            raise NameError("The HTTP method \"" + method + "\" is not valid!")
+            raise NameError('The HTTP method "' + method + '" is not valid!')
 
     except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError):
         # return error message and exit with err code
-        click.echo(click.style("Could not connect to API ", fg="red") + url
+        click.echo(
+            click.style("Could not connect to API ", fg="red")
+            + url
             + click.style(" because of a timeout or connection error!", fg="red")
         )
         exit(code=11)
@@ -160,7 +168,8 @@ def call_api(method, uri, data = None, url = read_option("api.url")):
 def main():
     """Lanlords CLI Help"""
 
-@main.command('test')
+
+@main.command("test")
 def main_test():
     """Test code snippets quickly"""
     ### DEBUG
@@ -173,8 +182,11 @@ def main_test():
 def config():
     """Configure the CLI"""
 
-@config.command('init')
-@click.confirmation_option(prompt='Are you sure? Any existing config wil be overwritten!')
+
+@config.command("init")
+@click.confirmation_option(
+    prompt="Are you sure? Any existing config wil be overwritten!"
+)
 @click.option("--api-url", prompt="Enter API url", help="API URL")
 def config_init(api_url):
     """
@@ -188,8 +200,8 @@ def config_init(api_url):
 
     # construct config content
     config = configparser.ConfigParser()
-    config['api'] = {}
-    config['api']['url'] = api_url
+    config["api"] = {}
+    config["api"]["url"] = api_url
 
     # write config file
     with open(default_config_file, "w") as configfile:
@@ -198,7 +210,8 @@ def config_init(api_url):
     # output result
     click.echo("Configuration file has been created/updated")
 
-@config.command('show')
+
+@config.command("show")
 def config_show():
     """
     Show current cli config
@@ -207,8 +220,8 @@ def config_show():
     # check for lanlords config file
     if not (os.path.isfile(default_config_file)):
         # return no config error message and exit with err code
-        click.echo(click.style("No config could be found at ", fg="red")
-            + default_config_file
+        click.echo(
+            click.style("No config could be found at ", fg="red") + default_config_file
         )
         exit(code=11)
     else:
@@ -226,9 +239,12 @@ def config_show():
             # separate per section
             for option in config[section]:
                 # add setting to output list
-                config_list = config_list + [{ "Setting": "> " + section + "."
-                    + option, "Value": click.style(config[section][option],
-                    fg="blue")}]
+                config_list = config_list + [
+                    {
+                        "Setting": "> " + section + "." + option,
+                        "Value": click.style(config[section][option], fg="blue"),
+                    }
+                ]
 
         # output config settings and it's values
         click.echo(tabulate(config_list, tablefmt="plain"))
@@ -239,21 +255,24 @@ def config_show():
 def server():
     """Manage game servers"""
 
-@server.command('start')
+
+@server.command("start")
 def server_start():
     """
     Start game server
     """
     click.echo("this is not yet implemented")
 
-@server.command('stop')
+
+@server.command("stop")
 def server_stop():
     """
     Stop game server
     """
     click.echo("this is not yet implemented")
 
-@server.command('list')
+
+@server.command("list")
 def server_list():
     """
     List running game servers
@@ -266,7 +285,8 @@ def server_list():
 def game():
     """Manage defined games"""
 
-@game.command('list')
+
+@game.command("list")
 @click.option("--output-json", help="Output in JSON format", is_flag=True)
 def game_list(output_json):
     """
@@ -291,7 +311,8 @@ def game_list(output_json):
 def container():
     """Manage running containers"""
 
-@container.command('list')
+
+@container.command("list")
 @click.option("--output-json", help="Output in JSON format", is_flag=True)
 def container_list(output_json):
     """
@@ -312,5 +333,5 @@ def container_list(output_json):
 
 
 # init main cli
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
