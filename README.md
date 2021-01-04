@@ -5,7 +5,7 @@
 # Lanlords CLI
 
 CLI to easily and quickly manage the Lanlords infrastructure from your trusted
-terminal. Beware that this CLI is extremely specific to Lanlords and communicates
+terminal. Beware that this CLI is specific to Lanlords and communicates
 with internal systems which may not public.
 
 ## Development
